@@ -1,0 +1,193 @@
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  background-image:url(../public/img/estrellas.gif);
+  background-size: 100% cover;
+  background-repeat: repeat;
+  height: 115vh;
+  width: auto;
+  position: relative; 
+  background-position: inherit;
+}
+
+/* css de AgregarImagenes */
+
+#agregar{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  margin-top: 50px;
+  font-size: 2rem;
+}
+
+#agregar .mb-3{
+  margin: 20px;
+}
+
+button{
+  height: 50px;
+}
+
+button:hover{
+  background-color: blueviolet;
+  color: aliceblue;
+ 
+}
+
+#agregar:hover{
+  color: blueviolet;
+}
+
+/* css de EditarImagenes */
+
+#editar{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  margin-top: 50px;
+  font-size: 2rem;
+}
+
+#editar .mb-3{
+  margin: 20px;
+}
+
+button{
+  height: 50px;
+}
+
+button:hover{
+  background-color: blueviolet;
+  color: aliceblue;
+ 
+}
+
+#editar:hover{
+  color: blueviolet;
+}
+
+/* css de Inicio */
+
+Form{
+  text-align: end;
+  align-items: end;
+  justify-content: end;
+  color: aliceblue;
+  margin-top: 50px;
+  font-size: 2rem;
+  margin-right: 20px;
+
+}
+
+p a{
+  color: blueviolet;
+}
+
+p a:hover{
+  color: aliceblue;
+}
+
+Form:hover{
+  color: blueviolet;
+}
+
+p{
+  color: aliceblue;
+  font-size: 2rem;
+  margin-left: 20px;
+}
+
+video{
+  width: 50%;
+  height: cover;
+}
+
+/* css de la Nasa */
+
+#image-video{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 500px;
+  width: cover;
+}
+
+iframe{
+  height: 500px;
+  width: 1500px;
+}
+
+#image-video img{ 
+  height: 500px;
+  width: cover;
+}
+
+/* CSS de Editar usuario */
+
+#editar{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  margin-top: 50px;
+  font-size: 2rem;
+}
+
+#form{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  margin-top: 50px;
+  font-size: 2rem;
+
+}
+
+#editar:hover{
+  color: blueviolet;
+}
+
+#form:hover{
+  color: blueviolet;
+}
+
+#form #css{
+  height: 30px;
+}
+
+@media screen and (min-width: 200px) and (max-width: 1280px) {
+
+  .row{
+  margin-top: 250px;
+  }
+
+  .row p{
+    text-align: justify;
+}
+
+p{
+  text-align: justify;
+}
+
+Form{
+  margin-top: 250px;
+}
+
+#agregar{
+  margin-top: 250px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#editar{
+  margin-top: 250px;
+}
+
+}
+
+

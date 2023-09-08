@@ -1,0 +1,58 @@
+.card{
+    display: flex;
+    margin: 25px;
+    height: 400px;
+    width: 350px;
+    overflow: hidden;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background: rgb(191, 176, 249);
+    background: linear-gradient(to right, rgb(68, 86, 245), rgb(33, 42, 140));
+}
+
+img{
+    display: inline;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px 5px 0, 0;
+}
+
+.card:hover{
+    box-shadow: 0 8px 16px 0 rgb(164, 240, 13);
+}
+
+/* #card{
+    display: inline-block;
+    margin: 5px;
+    height: 400px;
+    width: 350px;
+    overflow: hidden;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background: white;
+    background: linear-gradient(to right, white, white);
+} */
+
+h2{
+    color: blueviolet;
+    text-align: center;
+    font-size: 50px;
+}
+
+.card #link{
+    color: blueviolet;
+    height: 50px;
+}
+
+.card #button{
+    color: blueviolet;
+    height: 50px;
+}
+
+.card p{
+    color: black;
+}
+
+.container #nasa h2{
+    color: aliceblue;
+}
