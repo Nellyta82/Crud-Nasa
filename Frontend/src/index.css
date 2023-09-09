@@ -57,6 +57,7 @@ button:hover{
 
 button{
   height: 50px;
+  width: 100px;
 }
 
 button:hover{
@@ -103,6 +104,10 @@ p{
 video{
   width: 50%;
   height: cover;
+}
+
+#dropdownMenuButton1{
+  width: 150px;
 }
 
 /* css de la Nasa */

@@ -1,11 +1,11 @@
 import React from 'react';
 import Login from './Login';
-import Navbar from './NavBar';
+import Inicio from './Inicio';
 
 const LoginPage = () => {
   return (
     <div>
-      <Navbar/>
+      <Inicio/>
       <Login />
     </div>
   );

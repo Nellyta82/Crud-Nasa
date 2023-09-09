@@ -4,6 +4,7 @@ import {  useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../Card.css";
+// import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
 // import Tarjetas from "./Tarjetas";
 
 
@@ -87,11 +88,32 @@ return(
             <h2> Imágenes agregadas a la Base de Datos </h2>
         </div>
             <div className="row row-cols-1 row-cols-md-2 g-4" >
+            {/* <Grid container spacing={2}> */}
             {data && data.map((item)  => (
-                <div className="col"key={item._id+1}>
+                // <Grid item key={item._id} xs={12} sm={6} md={6} lg={6}>
+                //     <Card >
+                //         <CardMedia
+                //             component="img"
+                 
+                //             alt={item.titulo}
+                //             src={item.url} 
+                //             style={{ maxWidth: "100%", height:"200px" }}
+                //         />
+                //         <CardContent>
+                //             <Typography gutterBottom variant="h5" component="div">
+                //                 {item.titulo}
+                //             </Typography>
+                //             <Typography variant="body2" color="text.secondary">
+                //                 {item.fecha}
+                //              </Typography>
+                //             <Typography variant="h6" color="text.primary">
+                //                 {item.explicacion}
+                //             </Typography>
+                //         </CardContent>
+                 <div className="col"key={item._id+1}>
                     <div className="card" key={item._id+2}>
-                        {/* // <Tarjetas url={item.url} titulo={item.titulo} fecha={item.fecha} explicacion={item.explicacion} key={item._id}/>  */}
-                        <div  className="col-sm-6 offset-3" key={item._id} >
+                         {/* <Tarjetas url={item.url} titulo={item.titulo} fecha={item.fecha} explicacion={item.explicacion} key={item._id}/>  */}
+                         <div  className="col-sm-6 offset-3" key={item._id} >
                             <img src={item.url} alt={item.titulo} width="200px" />
                             <p>Fecha: {item.fecha}</p>
                             <p>Título: {item.titulo}</p>
@@ -100,15 +122,18 @@ return(
                         <Link to={ `/editar/${item._id}`}><li className="btn btn-success" id="link">Editar Imagen</li></Link>
                         <button className="btn btn-danger" id="button" onClick={()=>{borrarImagen(item._id)}}>Borrar Imagen</button>
                         <hr className="mt-4"></hr>
-                        </div>
-                        </div>
-                        </div>  
-                    ))}
-                     </div>
-                    </div>
+                           
+                    {/* </Card>
+                </Grid> */}
+                       </div>
+                    </div> 
+                </div>
+            ))} 
+            {/* </Grid> */}
+            
+            </div>
+    </div>
                 
-           
-   
     
 );
 }

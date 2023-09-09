@@ -29,19 +29,19 @@ function CrearUsuario(){
         <div className="container" id="agregar">
             <h1>Crea tu Usuario</h1>
             <div className="mb-3">
-                <label htmlFor="formGroupExampleInput" className="form-label">Nombre</label>
+                <label htmlFor="formGroupExampleInput" className="form-label" type="search" placeholder="Ingrese su nombre"> Nombre </label>
                 <input type="text" className="form-control" id="formGroupExampleInput" value={nombre} onChange={(e)=>setNombre(e.target.value)}/>
             </div>
             <div className="mb-3">
-                <label htmlFor="formGroupExampleInput2" className="form-label">Apellido</label>
+                <label htmlFor="formGroupExampleInput2" className="form-label"> Apellido </label>
                 <input type="text" className="form-control" id="formGroupExampleInput2" value={apellido} onChange={(e)=>setApellido(e.target.value)}/>
             </div>
             <div className="mb-3">
-                <label htmlFor="formGroupExampleInput3" className="form-label">Correo</label>
+                <label htmlFor="formGroupExampleInput3" className="form-label"> Correo </label>
                 <input type="text" className="form-control" id="formGroupExampleInput3" value={correo} onChange={(e)=>setCorreo(e.target.value)}/>
             </div>
             <div className="mb-3">
-                <label htmlFor="formGroupExampleInput4" className="form-label">Su Password</label>
+                <label htmlFor="formGroupExampleInput4" className="form-label"> Su Password </label>
                 <input type="text" className="form-control" id="formGroupExampleInput4" value={password} onChange={(e)=>setPassword(e.target.value)}/>
             </div> 
 

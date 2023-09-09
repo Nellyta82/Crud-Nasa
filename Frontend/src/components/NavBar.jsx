@@ -14,6 +14,7 @@ import { Outlet } from 'react-router-dom';
      <Navbar expand="lg" className="bg-body-tertiary">
        <Container fluid id="container">
          <Navbar.Brand href="/"></Navbar.Brand>
+         <Nav.Link id="logo" href="/"><img src='./img/logo.webp' alt='logo' width='230'/></Nav.Link>
            <Nav id="nav"
              className="me-auto my-2 my-lg-0"
              style={{ maxHeight: '100px' }}
@@ -31,7 +32,7 @@ import { Outlet } from 'react-router-dom';
                className="me-2"
                aria-label="Search"
              />
-             <Button variant="outline-success">Search</Button>
+             <Button variant="outline-success"> Search </Button>
            </Form>
            
        </Container>

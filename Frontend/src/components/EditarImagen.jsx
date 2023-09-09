@@ -44,23 +44,23 @@ function EditarImagen(){
             </div>
             
             <div className="mb-3">
-                <label htmlFor="formGroupExampleInput" className="form-label">Fecha de la Imagen</label>
+                <label htmlFor="formGroupExampleInput" className="form-label"> Fecha de la Imagen </label>
                 <input type="text" className="form-control" id="formGroupExampleInput" value={fecha} onChange={(e)=>setFecha(e.target.value)}/>
             </div>
             <div className="mb-3">
-                <label htmlFor="formGroupExampleInput2" className="form-label">Url de la Imagen</label>
+                <label htmlFor="formGroupExampleInput2" className="form-label"> Url de la Imagen </label>
                 <input type="text" className="form-control" id="formGroupExampleInput2" value={url} onChange={(e)=>setUrl(e.target.value)}/>
             </div>
             <div className="mb-3">
-                <label htmlFor="formGroupExampleInput3" className="form-label">Título de la Imagen</label>
+                <label htmlFor="formGroupExampleInput3" className="form-label"> Título de la Imagen </label>
                 <input type="text" className="form-control" id="formGroupExampleInput3" value={titulo} onChange={(e)=>setTitulo(e.target.value)}/>
             </div>
             <div className="mb-3">
-                <label htmlFor="formGroupExampleInput4" className="form-label">Explicación de la Imagen</label>
+                <label htmlFor="formGroupExampleInput4" className="form-label"> Explicación de la Imagen </label>
                 <input type="text" className="form-control" id="formGroupExampleInput4" value={explicacion} onChange={(e)=>setExplicacion(e.target.value)}/>
             </div> 
 
-        <button onClick={editarImagen} className="btn btn-success">Editar Imagen</button>
+        <button onClick={editarImagen} className="btn btn-success"> Editar Imagen </button>
     </div>
     )
 }
