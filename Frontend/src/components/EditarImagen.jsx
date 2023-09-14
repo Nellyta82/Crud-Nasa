@@ -12,7 +12,7 @@ function EditarImagen(){
     const [explicacion, setExplicacion] = useState('');
     const navegar = useNavigate()
     useEffect(() => {
-        axios.patch('http://localhost:8080/nasa/' + params.id).then(res=>{
+        axios.patch('https://crud-nasa-api.vercel.app/nasa/' + params.id).then(res=>{
             let dataImagen = res.data
 
             console.log('Data de la imagen', dataImagen.data.titulo)
@@ -31,7 +31,7 @@ function EditarImagen(){
             titulo:titulo,
             explicacion:explicacion,
         }
-            axios.patch('http://localhost:8080/nasa/' + params.id,imagenUpdate).then(res=> {
+            axios.patch('https://crud-nasa-api.vercel.app/nasa/' + params.id,imagenUpdate).then(res=> {
             console.log(res.data)
             alert('La imagen ha sido actualizada con éxito')
             navegar("/")

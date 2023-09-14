@@ -6,7 +6,7 @@ const Login = () => {
   const {register , handleSubmit} = useForm()
 
   const onSubmit = async(data) =>{
-    const resp = await fetch("http://localhost:8080/nasa/auth/login" , {
+    const resp = await fetch("https://crud-nasa-api.vercel.app/nasa/auth/login" , {
       method: "POST",
       body: JSON.stringify(data),
       headers:{

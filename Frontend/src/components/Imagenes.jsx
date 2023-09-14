@@ -14,7 +14,7 @@ function Imagenes(){
     useEffect(() => {
         // const obtenerImagen = async() => {
             // const ImagenesDB = await 
-            axios.get("http://localhost:8080/nasa/ImagenDB").then(res => {
+            axios.get("https://crud-nasa-api.vercel.app/nasa/ImagenDB").then(res => {
             console.log(res);
             setData(res.data.content);
         }).catch(err => console.log(err))
@@ -75,7 +75,7 @@ function Imagenes(){
 
 
 function borrarImagen(idImagen){
-    axios.delete("http://localhost:8080/nasa/" + idImagen).then(res=>{
+    axios.delete("https://crud-nasa-api.vercel.app/nasa/" + idImagen).then(res=>{
         console.log(res.data)
         alert("Imagen borrada")
         navegar(0)
