@@ -30,10 +30,10 @@ class Server{
 
     CORS(){
         this.app.use(cors({    
-            origin: "http://localhost:3000"
+            origin: "https://crud-nasa.vercel.app"
         }));
         this.app.use((req, res, next) => {
-            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+            res.setHeader('Access-Control-Allow-Origin', 'https://crud-nasa.vercel.app');
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             res.setHeader("Access-Control-Max-Age", "1800");
             res.setHeader('Access-Control-Allow-Headers','Content-Type, Accept');
