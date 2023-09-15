@@ -30,17 +30,19 @@ class Server{
 
     CORS(){
         this.app.use(cors({    
-            origin: "https://crud-nasa.vercel.app/"
+            origin: "https://crud-nasa.vercel.app/",
+            methods: ["GET", 'POST', 'PUT', 'PATCH', 'DELETE'],
+            credentials: true
         }));
-        this.app.use((req, res, next) => {
-            res.setHeader('Access-Control-Allow-Origin', 'https://crud-nasa.vercel.app/');
-            res.setHeader('Access-Control-Allow-Credentials', 'true');
-            res.setHeader("Access-Control-Max-Age", "1800");
-            res.setHeader('Access-Control-Allow-Headers','Content-Type, Accept');
-            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        // this.app.use((req, res, next) => {
+        //     res.setHeader('Access-Control-Allow-Origin', 'https://crud-nasa.vercel.app/');
+        //     res.setHeader('Access-Control-Allow-Credentials', 'true');
+        //     res.setHeader("Access-Control-Max-Age", "1800");
+        //     res.setHeader('Access-Control-Allow-Headers','Content-Type, Accept');
+        //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-        next();
-        });
+        // next();
+        // });
     }
 
     routes(){
