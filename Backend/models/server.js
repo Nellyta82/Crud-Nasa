@@ -47,7 +47,7 @@ class Server{
 
     middlewares() {
         this.app.use(cors({
-          origin:['https://crud-nasa-api.vercel.app/'],
+          origin:['https://crud-nasa.vercel.app/'],
           methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
           credentials: true,
     }));
