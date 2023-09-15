@@ -30,7 +30,7 @@ class Server{
 
     CORS(){
         this.app.use(cors({    
-            origin: "https://crud-nasa.vercel.app/",
+            origin: "https://crud-nasa-api.vercel.app/",
             methods: ["GET", 'POST', 'PUT', 'PATCH', 'DELETE'],
             credentials: true
         }));
