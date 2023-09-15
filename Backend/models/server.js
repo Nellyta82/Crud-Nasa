@@ -21,19 +21,19 @@ class Server{
         await dbConnection();
     }
   
-    middlewares(){ 
-        this.app.use(express.json());
-        this.app.use(express.static("public"));
-        this.app.use(express.urlencoded({ extended: true }));
-        this.app.use(cors());
-    }
+    // middlewares(){ 
+    //     this.app.use(express.json());
+    //     this.app.use(express.static("public"));
+    //     this.app.use(express.urlencoded({ extended: true }));
+    //     this.app.use(cors());
+    // }
 
-    CORS(){
-        this.app.use(cors({    
-            origin: "https://crud-nasa-api.vercel.app/",
-            methods: ["GET", 'POST', 'PUT', 'PATCH', 'DELETE'],
-            credentials: true
-        }));
+    // CORS(){
+    //     this.app.use(cors({    
+    //         origin: "https://crud-nasa-api.vercel.app/",
+    //         methods: ["GET", 'POST', 'PUT', 'PATCH', 'DELETE'],
+    //         credentials: true
+    //     }));
         // this.app.use((req, res, next) => {
         //     res.setHeader('Access-Control-Allow-Origin', 'https://crud-nasa.vercel.app/');
         //     res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -43,7 +43,19 @@ class Server{
 
         // next();
         // });
-    }
+    // }
+
+    middlewares() {
+        this.app.use(cors({
+          origin:['https://crud-nasa-api.vercel.app/'],
+          methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+          credentials: true,
+    }));
+    
+        this.app.use(express.json());
+
+        this.app.use(express.static("public"));
+      }
 
     routes(){
         this.app.use(this.rootPath, require("../routes/imagenes"));
