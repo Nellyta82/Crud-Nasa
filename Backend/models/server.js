@@ -2,6 +2,8 @@ const cors = require("cors");
 const express = require("express");
 const dbConnection = require("../database/dbconnection");
 
+require('dotenv').config();
+
 class Server{
 
     constructor(){
@@ -13,6 +15,8 @@ class Server{
         this.authPath = '/nasa/auth';
 
         this.middlewares();
+        this.app.use(cors());
+        this.app.use(express.json());
         this.routes();
         this.conectarDB();
     }
@@ -47,7 +51,7 @@ class Server{
 
     middlewares() {
         this.app.use(cors({
-          origin:['https://crud-nasa.vercel.app'],
+          origin:['https://crud-nasa.vercel.app', 'http://localhost:8080'],
           methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
           credentials: true,
     }));
@@ -63,6 +67,10 @@ class Server{
         this.app.use(this.imagenesPath,require('../routes/imagenes'));
         this.app.use(this.usuariosPath, require("../routes/usuarios"));
         this.app.use(this.authPath, require("../routes/usuarios"));
+    }
+
+    async conectarDB() {
+        await dbConnection();
     }
 
     listen (){
