@@ -4,4 +4,4 @@ const Server = require("../Backend/models/server");
 
 const server = new Server();
 
-server.listen();s
+server.listen();
