@@ -15,7 +15,7 @@ function Imagenes() {
 
     const obtenerImagenDB = async () => {
         try {
-          const response = await fetch('https://crud-nasa-api.onrender.com/nasa/ImagenDB');
+          const response = await fetch('https://crud-nasa-backend.onrender.com/nasa/ImagenDB');
           
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -105,7 +105,7 @@ function Imagenes() {
 
 
 function borrarImagen(id){
-    axios.delete("https://crud-nasa-api.onrender.com/nasa/" + id).then(res=>{
+    axios.delete("https://crud-nasa-backend.onrender.com/nasa/" + id).then(res=>{
         console.log(res.ImagenDB)
         alert("Imagen borrada")
         // navegar(0)
