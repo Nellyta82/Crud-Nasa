@@ -1,15 +1,12 @@
 const cors = require("cors");
 const express = require("express");
 const dbConnection = require("../database/dbconnection");
-const routes = require("../routes/");
-
-
 
 class Server{
 
     constructor(){
         this.app = express();
-        this.rootPath = "/nasa";
+        // this.rootPath = "/nasa";
         this.imagenesPath = '/nasa/imagenes';
         this.port = process.env.PORT; 
         this.usuariosPath = '/nasa/usuarios';
@@ -61,13 +58,10 @@ class Server{
     //     this.app.use(express.static("public"));
     //   }
 
-    routes() {
-        this.app.use(this.rootPath, routes);
-      }
 
     routes(){
-        this.app.use(this.rootPath, require("../routes/imagenes"));
-        this.app.use(this.rootPath, require("../routes/usuarios"));
+        // this.app.use(this.rootPath, require("../routes/imagenes"));
+        // this.app.use(this.rootPath, require("../routes/usuarios"));
         this.app.use(this.imagenesPath,require('../routes/imagenes'));
         this.app.use(this.usuariosPath, require("../routes/usuarios"));
         this.app.use(this.authPath, require("../routes/usuarios"));
