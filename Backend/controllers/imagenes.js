@@ -43,14 +43,23 @@ const obtenerImagenes = async (_, res)=>{
 
 // Para traer imágenes de la DB
 
-const obtenerImagenDB = async (req, res)=>{
-        const ImagenDB= await Image.find();
+// const obtenerImagenDB = async (req, res)=>{
+//         const ImagenDB= await Image.find();
 
-        res.status(200).send({
-            msg:"Esta es la lista de Imágenes",
-            data: ImagenDB,
-    });  
-}
+//         res.status(200).send({
+//             msg:"Esta es la lista de Imágenes",
+//             data: ImagenDB,
+//     });  
+// }
+
+const obtenerImagenDB = async (req, res) => {
+    let ImagenDB = await Image.find();
+  
+    res.status(200).json({
+      ImagenDB,
+    });
+  };
+  
 
 const actualizarImagenes = async (req, res)=>{
     const{id} = req.params;
