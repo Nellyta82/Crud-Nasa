@@ -1,8 +1,7 @@
 const cors = require("cors");
 const express = require("express");
 const dbConnection = require("../database/dbconnection");
-const routes = require("../routes/imagenes");
-const routes = require("../routes/imagenes");
+const routes = require("../routes/");
 
 
 
@@ -66,13 +65,13 @@ class Server{
         this.app.use(this.rootPath, routes);
       }
 
-    // routes(){
-    //     this.app.use(this.rootPath, require("../routes/imagenes"));
-    //     this.app.use(this.rootPath, require("../routes/usuarios"));
-    //     this.app.use(this.imagenesPath,require('../routes/imagenes'));
-    //     this.app.use(this.usuariosPath, require("../routes/usuarios"));
-    //     this.app.use(this.authPath, require("../routes/usuarios"));
-    // }
+    routes(){
+        this.app.use(this.rootPath, require("../routes/imagenes"));
+        this.app.use(this.rootPath, require("../routes/usuarios"));
+        this.app.use(this.imagenesPath,require('../routes/imagenes'));
+        this.app.use(this.usuariosPath, require("../routes/usuarios"));
+        this.app.use(this.authPath, require("../routes/usuarios"));
+    }
 
     async conectarDB() {
         await dbConnection();
