@@ -56,7 +56,7 @@ const handleSubmit = async (event) => {
   event.preventDefault();
 
   try {
-    const backendResponse = await axios.patch(`http://localhost:8080/nasa//${id}`, { 
+    const backendResponse = await axios.patch(`https://crud-nasa-api.onrender.com/nasa//${id}`, { 
       id: id,
       fecha: fecha,
       url: url,
@@ -66,7 +66,7 @@ const handleSubmit = async (event) => {
     backendResponse();
 
     formRef.current.reset();
-    setId('');
+    setId('')
     setUrl('');
     setTitulo(''); 
     setExplicacion(''); 
