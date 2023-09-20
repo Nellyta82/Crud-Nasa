@@ -6,7 +6,7 @@ class Server{
 
     constructor(){
         this.app = express();
-        // this.rootPath = "/nasa";
+        this.rootPath = "/nasa";
         this.imagenesPath = '/nasa/imagenes';
         this.port = process.env.PORT; 
         this.usuariosPath = '/nasa/usuarios';
@@ -20,6 +20,8 @@ class Server{
     middlewares(){
         this.app.use(cors());
         this.app.use(express.json());
+        this.app.use(express.static("public"));
+        this.app.use(express.urlencoded({ extended: true }));
     }
   
     // middlewares(){ 
@@ -60,8 +62,8 @@ class Server{
 
 
     routes(){
-        // this.app.use(this.rootPath, require("../routes/imagenes"));
-        // this.app.use(this.rootPath, require("../routes/usuarios"));
+        this.app.use(this.rootPath, require("../routes/imagenes"));
+        this.app.use(this.rootPath, require("../routes/usuarios"));
         this.app.use(this.imagenesPath,require('../routes/imagenes'));
         this.app.use(this.usuariosPath, require("../routes/usuarios"));
         this.app.use(this.authPath, require("../routes/usuarios"));
@@ -76,9 +78,9 @@ class Server{
             console.log(`Servidor corriendo en puerto ${this.port}`);
         });
 
-        // this.app.get('/',(_,res)=>{
-        //     res.send('Conexión exitosa')
-        // });
+        this.app.get('/',(_,res)=>{
+            res.send('Conexión exitosa')
+        });
     }
     
 }
