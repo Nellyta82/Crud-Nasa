@@ -1,42 +1,79 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
-import axios from "axios";
+// import React from "react";
+// import { useNavigate, useParams } from "react-router-dom";
+// import { useState } from "react";
+// import { useEffect } from "react";
+// import axios from "axios";
 
-function EditarImagen(){
-    const params= useParams()
-    const [fecha, setFecha] = useState('');
-    const [url, setUrl] = useState('');
-    const [titulo, setTitulo] = useState('');
-    const [explicacion, setExplicacion] = useState('');
-    const navegar = useNavigate()
-    useEffect(() => {
-        axios.patch('http://localhost:8080/nasa/' + params.id).then(res=>{
-            let dataImagen = res.data
+// function EditarImagen(){
+//     const params= useParams()
+//     const [fecha, setFecha] = useState('');
+//     const [url, setUrl] = useState('');
+//     const [titulo, setTitulo] = useState('');
+//     const [explicacion, setExplicacion] = useState('');
+//     const navegar = useNavigate()
+//     useEffect(() => {
+//         axios.patch('http://localhost:8080/nasa/' + params.id).then(res=>{
+//             let dataImagen = res.data
 
-            console.log('Data de la imagen', dataImagen.data.titulo)
-            setFecha(dataImagen.data.fecha)
-            setUrl(dataImagen.data.url)
-            setTitulo(dataImagen.data.titulo)
-            setExplicacion(dataImagen.data.explicacion)
+//             console.log('Data de la imagen', dataImagen.data.titulo)
+//             setFecha(dataImagen.data.fecha)
+//             setUrl(dataImagen.data.url)
+//             setTitulo(dataImagen.data.titulo)
+//             setExplicacion(dataImagen.data.explicacion)
 
-        });
-    },[])
+//         });
+//     },[])
 
-    function editarImagen () {
-        const imagenUpdate={
-            fecha:fecha,
-            url:url,
-            titulo:titulo,
-            explicacion:explicacion,
-        }
-            axios.patch('http://localhost:8080/nasa/' + params.id,imagenUpdate).then(res=> {
-            console.log(res.data)
-            alert('La imagen ha sido actualizada con éxito')
-            navegar("/")
-        })
-    }
+//     function editarImagen () {
+//         const imagenUpdate={
+//             fecha:fecha,
+//             url:url,
+//             titulo:titulo,
+//             explicacion:explicacion,
+//         }
+//             axios.patch('http://localhost:8080/nasa/' + params.id,imagenUpdate).then(res=> {
+//             console.log(res.data)
+//             alert('La imagen ha sido actualizada con éxito')
+//             navegar("/")
+//         })
+//     }
+
+
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useRef } from 'react';
+
+
+const EditarImagen = () => {
+  const [id, setId] = useState('');
+  const [fecha, setFecha] = useState('');
+  const [url, setUrl] = useState('');
+  const [titulo, setTitulo] = useState('');
+  const [explicacion, setExplicacion] = useState('');
+  const formRef = useRef(null); 
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  try {
+    const backendResponse = await axios.patch(`http://localhost:8080/nasa//${id}`, { 
+      id: id,
+      fecha: fecha,
+      url: url,
+      titulo: titulo,
+      explicacion: explicacion,
+    });
+    backendResponse();
+
+    formRef.current.reset();
+    setId('');
+    setUrl('');
+    setTitulo(''); 
+    setExplicacion(''); 
+  } catch (error) {
+    console.error('Error al enviar el formulario:', error);
+  }
+};
     return(
         <div className="container" id="editar">
             <div className="row">
@@ -60,7 +97,7 @@ function EditarImagen(){
                 <input type="text" className="form-control" id="formGroupExampleInput4" value={explicacion} onChange={(e)=>setExplicacion(e.target.value)}/>
             </div> 
 
-        <button onClick={editarImagen} className="btn btn-success"> Editar Imagen </button>
+        <button onClick={handleSubmit} className="btn btn-success"> Editar Imagen </button>
     </div>
     )
 }

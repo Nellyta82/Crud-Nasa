@@ -1,29 +1,59 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+// import {  useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "../Card.css";
+import AgregarImagen from "./AgregarImagen";
 // import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
 // import Tarjetas from "./Tarjetas";
 
 
-function Imagenes(){
-    const[data, setData] = useState([{}]);
-    const navegar = useNavigate()
-    useEffect(() => {
-        // const obtenerImagen = async() => {
-            // const ImagenesDB = await 
-            axios.get("http://localhost:8080/nasa/ImagenDB").then(res => {
-            console.log(res);
-            setData(res.data.content);
-        }).catch(err => console.log(err))
-        // obtenerImagen();
-    },  []);
+function Imagenes() {
 
-    console.log(data);
+    const [ImagenDB, setImagenDB] = useState();
 
-    if (!data) return(<div />);
+
+    const obtenerImagenDB = async () => {
+        try {
+          const response = await fetch('http://localhost:8080/nasa/ImagenDB');
+          
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          
+          const data = await response.json();
+          const ImagenDB = data.ImagenDB; 
+          
+          console.log('la imagen es:', ImagenDB);
+          setImagenDB(ImagenDB);
+        } catch (error) {
+          console.error('Fetch Error:', error);
+        }
+      };
+      
+
+    useEffect(()=>{
+        obtenerImagenDB()
+    },[])
+
+
+
+// function Imagenes(){
+//     const[data, setData] = useState([{}]);
+//     const navegar = useNavigate()
+//     useEffect(() => {
+//         // const obtenerImagen = async() => {
+//             // const ImagenesDB = await 
+//             axios.get("http://localhost:8080/nasa/ImagenDB").then(res => {
+//             console.log(res);
+//             setData(res.data.content);
+//         }).catch(err => console.log(err))
+//         // obtenerImagen();
+//     },  []);
+
+//     console.log(data);
+
+//     if (!data) return(<div />);
 
 // function Imagenes  ()  {
 //     const backend = 'http://localhost:8080/nasa/ImagenDB' 
@@ -74,68 +104,44 @@ function Imagenes(){
 //     console.log(ImagenesDB);
 
 
-function borrarImagen(idImagen){
-    axios.delete("http://localhost:8080/nasa/" + idImagen).then(res=>{
-        console.log(res.data)
+function borrarImagen(id){
+    axios.delete("http://localhost:8080/nasa/" + id).then(res=>{
+        console.log(res.ImagenDB)
         alert("Imagen borrada")
-        navegar(0)
+        // navegar(0)
     }).catch(err=>console.log(err))
 }
 
-return(
-    <div className="container">
-        <div className="row ">
-            <h2> Imágenes agregadas a la Base de Datos </h2>
+return (
+    <div>
+      <AgregarImagen obtenerImagenDB={obtenerImagenDB} />
+        <h2>Imágenes</h2>
+        <div className="container-imagenes">
+
+                {
+
+                    ImagenDB && ImagenDB.length !== 0 && ImagenDB.map(image=>(
+
+                        <div className="card" key={image._id}>
+                            <img id="img" src={image.url} alt={image.titulo} width="200px" />
+                            <p>Fecha: {image.fecha}</p>
+                            <p>Título: {image.titulo}</p>
+                            <p id="explicacion">Explicación: {image.explicacion}</p>
+
+                            <p>Si quiere Editar la imagen, haga click <a href='/editar'>aquí</a></p>
+                            <button className="btn btn-danger" id="button" onClick={()=>{borrarImagen(image._id)}}>Borrar Imagen</button>
+
+                        </div>
+
+                    ))
+
+                }
         </div>
-            <div className="row row-cols-1 row-cols-md-2 g-4" >
-            {/* <Grid container spacing={2}> */}
-            {data && data.map((item)  => (
-                // <Grid item key={item._id} xs={12} sm={6} md={6} lg={6}>
-                //     <Card >
-                //         <CardMedia
-                //             component="img"
-                 
-                //             alt={item.titulo}
-                //             src={item.url} 
-                //             style={{ maxWidth: "100%", height:"200px" }}
-                //         />
-                //         <CardContent>
-                //             <Typography gutterBottom variant="h5" component="div">
-                //                 {item.titulo}
-                //             </Typography>
-                //             <Typography variant="body2" color="text.secondary">
-                //                 {item.fecha}
-                //              </Typography>
-                //             <Typography variant="h6" color="text.primary">
-                //                 {item.explicacion}
-                //             </Typography>
-                //         </CardContent>
-                 <div className="col"key={item._id+1}>
-                    <div className="card" key={item._id+2}>
-                         {/* <Tarjetas url={item.url} titulo={item.titulo} fecha={item.fecha} explicacion={item.explicacion} key={item._id}/>  */}
-                         <div  className="col-sm-6 offset-3" key={item._id} >
-                            <img src={item.url} alt={item.titulo} width="200px" />
-                            <p>Fecha: {item.fecha}</p>
-                            <p>Título: {item.titulo}</p>
-                            <p>Explicación: {item.explicacion}</p> 
-                        
-                        <Link to={ `/editar/${item._id}`}><li className="btn btn-success" id="link">Editar Imagen</li></Link>
-                        <button className="btn btn-danger" id="button" onClick={()=>{borrarImagen(item._id)}}>Borrar Imagen</button>
-                        <hr className="mt-4"></hr>
-                           
-                    {/* </Card>
-                </Grid> */}
-                       </div>
-                    </div> 
-                </div>
-            ))} 
-            {/* </Grid> */}
-            
-            </div>
-    </div>
-                
+
+        
+</div>
     
-);
+  )
 }
 
 export default Imagenes;

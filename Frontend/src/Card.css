@@ -1,20 +1,30 @@
-.card{
+.container-imagenes{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+  }
+.card{
     margin: 25px;
-    height: 400px;
-    width: 350px;
-    overflow: hidden;
+    height: 600px;
+    width: 400px;
+    overflow: scroll;
     box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
     border-radius: 1em;
     background: rgb(191, 176, 249);
-    background: linear-gradient(to right, rgb(68, 86, 245), rgb(33, 42, 140));
+    background: linear-gradient(to right, rgb(68, 86, 245), rgb(96, 108, 237));
 }
 
-img{
-    display: inline;
+.card #img{
     height: 180px;
     object-fit: cover;
     border-radius: 5px 5px 0, 0;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-left: 80px;
+    margin-top: 10px;
 }
 
 .card:hover{
@@ -40,8 +50,10 @@ h2{
 }
 
 .card #link{
-    color: blueviolet;
+    color: rgb(19, 7, 30);
     height: 50px;
+    font-size: 30px;
+    text-decoration: none;
 }
 
 .card #button{
@@ -51,6 +63,14 @@ h2{
 
 .card p{
     color: black;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.card p #explicacion{
+    font-size: 10px;
 }
 
 .container #nasa h2{
