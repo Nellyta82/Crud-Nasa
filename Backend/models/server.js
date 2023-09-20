@@ -2,7 +2,6 @@ const cors = require("cors");
 const express = require("express");
 const dbConnection = require("../database/dbconnection");
 
-require('dotenv').config();
 
 class Server{
 
@@ -15,14 +14,13 @@ class Server{
         this.authPath = '/nasa/auth';
 
         this.middlewares();
-        this.app.use(cors());
-        this.app.use(express.json());
         this.routes();
         this.conectarDB();
     }
 
-    async conectarDB(){
-        await dbConnection();
+    middlewares(){
+        this.app.use(cors());
+        this.app.use(express.json());
     }
   
     // middlewares(){ 
@@ -49,17 +47,17 @@ class Server{
         // });
     // }
 
-    middlewares() {
-        this.app.use(cors({
-          origin:['http://localhost:8080'],
-          methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-          credentials: true,
-    }));
+    // middlewares() {
+    //     this.app.use(cors({
+    //       origin:['http://localhost:8080'],
+    //       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    //       credentials: true,
+    // }));
     
-        this.app.use(express.json());
+    //     this.app.use(express.json());
 
-        this.app.use(express.static("public"));
-      }
+    //     this.app.use(express.static("public"));
+    //   }
 
     routes(){
         this.app.use(this.rootPath, require("../routes/imagenes"));
