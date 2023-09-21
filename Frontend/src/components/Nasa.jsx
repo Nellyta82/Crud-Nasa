@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 
 function Nasa(){
 
-    const backend = 'http://localhost:8080/getAllImage' 
+    const backend = 'https://crud-nasa-backend.onrender.com/nasa/getAllImage' 
     const [photoData, setPhotoData] = useState(null);
     useEffect(async () => {  
         const res = await fetch(backend);

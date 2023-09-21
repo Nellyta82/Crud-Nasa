@@ -19,7 +19,7 @@ function AgregarImagen(){
             titulo:titulo,
             explicacion:explicacion
         }
-        axios.post('http://localhost:8080/nasa/', newImage)
+        axios.post('https://crud-nasa-backend.onrender.com/nasa/', newImage)
         .then(res => console.log(res.data))
         .then(err => console.log(err))
         alert('Imagen agregada a la DB')
