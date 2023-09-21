@@ -1,17 +1,3 @@
-// import  Form  from "./Form";
-
-// const Inicio = () => {
-//     return(
-//         <div>
-//             <Form/>  
-//         </div>
-//     )
-// }
-
-// export default Inicio;
-
-
-
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
