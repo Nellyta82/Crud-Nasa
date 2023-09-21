@@ -78,9 +78,9 @@ class Server{
             console.log(`Servidor corriendo en puerto ${this.port}`);
         });
 
-        this.app.get('/',(_,res)=>{
-            res.send('Conexión exitosa')
-        });
+        // this.app.get('/',(_,res)=>{
+        //     res.send('Conexión exitosa')
+        // });
     }
     
 }
