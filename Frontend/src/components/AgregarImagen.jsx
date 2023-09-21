@@ -22,7 +22,7 @@ function AgregarImagen(){
         axios.post('https://crud-nasa-backend.onrender.com/nasa/', newImage)
         .then(res => console.log(res.data))
         .then(err => console.log(err))
-        alert('Imagen agregada a la Base de Datos')
+        alert('Imagen agregada a la DB')
         navegar(0)
     }
 
