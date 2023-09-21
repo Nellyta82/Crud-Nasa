@@ -14,8 +14,8 @@ class Server{
 
         this.middlewares();
         this.routes();
-        // this.conectarDB();
-        this.dbStarter();
+        this.conectarDB();
+        // this.dbStarter();
     }
 
     middlewares(){
@@ -25,28 +25,23 @@ class Server{
         this.app.use(express.urlencoded({ extended: true }));
     }
   
-    // middlewares(){ 
-    //     this.app.use(express.json());
-    //     this.app.use(express.static("public"));
-    //     this.app.use(express.urlencoded({ extended: true }));
-    //     this.app.use(cors());
-    // }
+   
 
     // CORS(){
     //     this.app.use(cors({    
-    //         origin: "https://crud-nasa-api.vercel.app/",
+    //         origin: "http://localhost:8080/",
     //         methods: ["GET", 'POST', 'PUT', 'PATCH', 'DELETE'],
     //         credentials: true
     //     }));
-        // this.app.use((req, res, next) => {
-        //     res.setHeader('Access-Control-Allow-Origin', 'https://crud-nasa.vercel.app/');
-        //     res.setHeader('Access-Control-Allow-Credentials', 'true');
-        //     res.setHeader("Access-Control-Max-Age", "1800");
-        //     res.setHeader('Access-Control-Allow-Headers','Content-Type, Accept');
-        //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    //     this.app.use((req, res, next) => {
+    //         res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080/');
+    //         res.setHeader('Access-Control-Allow-Credentials', 'true');
+    //         res.setHeader("Access-Control-Max-Age", "1800");
+    //         res.setHeader('Access-Control-Allow-Headers','Content-Type, Accept');
+    //         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-        // next();
-        // });
+    //     next();
+    //     });
     // }
 
     // middlewares() {
@@ -70,22 +65,22 @@ class Server{
         this.app.use(this.authPath, require("../routes/usuarios"));
     }
 
-    async dbStarter() {
-        await dbConnection();
-      }
-
-    // async conectarDB() {
+    // async dbStarter() {
     //     await dbConnection();
-    // }
+    //   }
+
+    async conectarDB() {
+        await dbConnection();
+    }
 
     listen (){
         this.app.listen(this.port, () => {
             console.log(`Servidor corriendo en puerto ${this.port}`);
         });
 
-        this.app.get('/',(_,res)=>{
-            res.send('Conexión exitosa')
-        });
+        // this.app.get('/',(_,res)=>{
+        //     res.send('Conexión exitosa')
+        // });
     }
     
 }
