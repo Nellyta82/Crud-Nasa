@@ -1,22 +1,21 @@
 const cors = require("cors");
 const express = require("express");
 const dbConnection = require("../database/dbconnection");
-const imagenenesRoutes = require("../routes/imagenes");
-const usuariosRoutes = require("../routes/usuarios");
 
 class Server{
 
     constructor(){
         this.app = express();
         this.rootPath = "/nasa";
-        // this.imagenesPath = '/nasa/imagenes';
+        this.imagenesPath = '/nasa/imagenes';
         this.port = process.env.PORT; 
-        // this.usuariosPath = '/nasa/usuarios';
-        // this.authPath = '/nasa/auth';
+        this.usuariosPath = '/nasa/usuarios';
+        this.authPath = '/nasa/auth';
 
         this.middlewares();
         this.routes();
-        this.conectarDB();
+        // this.conectarDB();
+        this.dbStarter();
     }
 
     middlewares(){
@@ -64,35 +63,29 @@ class Server{
 
 
     routes(){
-        this.app.use("/nasa/imagenes", imagenenesRoutes);
-        this.app.use("nasa/usuarios", usuariosRoutes); 
+        this.app.use(this.rootPath, require("../routes/imagenes"));
+        this.app.use(this.rootPath, require("../routes/usuarios"));
+        this.app.use(this.imagenesPath,require('../routes/imagenes'));
+        this.app.use(this.usuariosPath, require("../routes/usuarios"));
+        this.app.use(this.authPath, require("../routes/usuarios"));
     }
 
-
-    // routes(){
-    //     this.app.use(this.rootPath, require("../routes/imagenes"));
-    //     this.app.use(this.rootPath, require("../routes/usuarios"));
-    //     this.app.use(this.imagenesPath,require('../routes/imagenes'));
-    //     this.app.use(this.usuariosPath, require("../routes/usuarios"));
-    //     this.app.use(this.authPath, require("../routes/usuarios"));
-    // }
-
-    async conectarDB() {
+    async dbStarter() {
         await dbConnection();
-    }
+      }
+
+    // async conectarDB() {
+    //     await dbConnection();
+    // }
 
     listen (){
         this.app.listen(this.port, () => {
             console.log(`Servidor corriendo en puerto ${this.port}`);
         });
 
-        this.app.get('/',(_,res)=>{
-            res.send('Conexión exitosa')
-        });
-
-        this.app.get('/nasa/alive', (req, res) => {
-            return res.json({ message: `Hola hiciste tu 1ra api, y esta ejecutandose` });
-          });
+        // this.app.get('/',(_,res)=>{
+        //     res.send('Conexión exitosa')
+        // });
     }
     
 }
